@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32002.261
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jobsite.API", "Jobsite.API\Jobsite.API.csproj", "{16624B00-26C9-46A5-AE53-D57ACC1B7961}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jobsite.DAL", "Jobsite.DAL\Jobsite.DAL.csproj", "{115B2089-49EC-464B-B587-21FAFE83007E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{16624B00-26C9-46A5-AE53-D57ACC1B7961}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16624B00-26C9-46A5-AE53-D57ACC1B7961}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16624B00-26C9-46A5-AE53-D57ACC1B7961}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16624B00-26C9-46A5-AE53-D57ACC1B7961}.Release|Any CPU.Build.0 = Release|Any CPU
+		{115B2089-49EC-464B-B587-21FAFE83007E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{115B2089-49EC-464B-B587-21FAFE83007E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{115B2089-49EC-464B-B587-21FAFE83007E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{115B2089-49EC-464B-B587-21FAFE83007E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B6BB241B-2CB8-48B5-A182-D611FFD95080}
+	EndGlobalSection
+EndGlobal
