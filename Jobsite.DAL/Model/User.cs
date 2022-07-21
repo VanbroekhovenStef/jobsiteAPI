@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Jobsite.DAL.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -18,7 +19,10 @@ namespace Jobsite.DAL.Models
         public string? Telefoon { get; set; }
         public string? CV { get; set; }
         public string? LinkedIn { get; set; }
+        public string Foto { get; set; }
         public int RoleId { get; set; }
+        public Role Role { get; set; }
+
         ICollection<Bedrijf> Bedrijven { get; set; }
         ICollection<Sollicitatie> Sollicitaties { get; set; }
         [NotMapped]

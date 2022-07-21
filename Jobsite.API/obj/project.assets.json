@@ -7458,11 +7458,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\tmp\\Angular\\Jobsite.API\\Jobsite.API\\Jobsite.API.csproj",
+      "projectUniqueName": "C:\\Development\\Angular\\jobsiteAPI\\Jobsite.API\\Jobsite.API.csproj",
       "projectName": "Jobsite.API",
-      "projectPath": "C:\\tmp\\Angular\\Jobsite.API\\Jobsite.API\\Jobsite.API.csproj",
+      "projectPath": "C:\\Development\\Angular\\jobsiteAPI\\Jobsite.API\\Jobsite.API.csproj",
       "packagesPath": "C:\\Users\\stefv\\.nuget\\packages\\",
-      "outputPath": "C:\\tmp\\Angular\\Jobsite.API\\Jobsite.API\\obj\\",
+      "outputPath": "C:\\Development\\Angular\\jobsiteAPI\\Jobsite.API\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\stefv\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -7479,8 +7479,8 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "C:\\tmp\\Angular\\Jobsite.API\\Jobsite.DAL\\Jobsite.DAL.csproj": {
-              "projectPath": "C:\\tmp\\Angular\\Jobsite.API\\Jobsite.DAL\\Jobsite.DAL.csproj"
+            "C:\\Development\\Angular\\jobsiteAPI\\Jobsite.DAL\\Jobsite.DAL.csproj": {
+              "projectPath": "C:\\Development\\Angular\\jobsiteAPI\\Jobsite.DAL\\Jobsite.DAL.csproj"
             }
           }
         }
@@ -7542,7 +7542,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.302\\RuntimeIdentifierGraph.json"
       }
     }
   }

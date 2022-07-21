@@ -4,12 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Jobsite.DAL.Models
+namespace Jobsite.DAL.Model
 {
-    public enum Role
+    public class Role
     {
-        SuperAdmin = 1,
-        Bedrijfsbeheerder = 2,
-        Gebruiker = 3
+        public int Id { get; set; }
+        public string Name { get; set; }
     }
 }

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "EY5oGm/xdjV2Zfp/ACo+R63VwtAxF6iijUjj2zlx3NAfl8j0oX4/0Kbng9Y7SIV+gvL43UFPqoqSazWxJa54hA==",
+  "dgSpecHash": "A77SJuhjsG2R2Dw4HITdvexIUGPeM3bp9ZBHhCrhXvyJe4xdHrylOu9wwhlAQPmfVwyj5azUR8vqgbdQoHLnsA==",
   "success": true,
-  "projectFilePath": "C:\\tmp\\Angular\\Jobsite.API\\Jobsite.DAL\\Jobsite.DAL.csproj",
+  "projectFilePath": "C:\\Development\\Angular\\jobsiteAPI\\Jobsite.DAL\\Jobsite.DAL.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\stefv\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\stefv\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\5.0.17\\microsoft.aspnetcore.authentication.jwtbearer.5.0.17.nupkg.sha512",

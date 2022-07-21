@@ -6,53 +6,53 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Jobsite.DAL.Data;
-using Jobsite.DAL.Models;
+using Jobsite.DAL.Model;
 
 namespace Jobsite.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class VacaturesController : ControllerBase
+    public class RolesController : ControllerBase
     {
         private readonly JobsiteContext _context;
 
-        public VacaturesController(JobsiteContext context)
+        public RolesController(JobsiteContext context)
         {
             _context = context;
         }
 
-        // GET: api/Vacatures
+        // GET: api/Roles
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Vacature>>> GetVacatures()
+        public async Task<ActionResult<IEnumerable<Role>>> GetRollen()
         {
-            return await _context.Vacatures.Include(s => s.Sollicitaties).Include(x => x.Bedrijf).ToListAsync();
+            return await _context.Rollen.ToListAsync();
         }
 
-        // GET: api/Vacatures/5
+        // GET: api/Roles/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Vacature>> GetVacature(int id)
+        public async Task<ActionResult<Role>> GetRole(int id)
         {
-            var vacature = await _context.Vacatures.Include(x => x.Sollicitaties).Include(x => x.Bedrijf).FirstOrDefaultAsync(i => i.Id == id);
+            var role = await _context.Rollen.FindAsync(id);
 
-            if (vacature == null)
+            if (role == null)
             {
                 return NotFound();
             }
 
-            return vacature;
+            return role;
         }
 
-        // PUT: api/Vacatures/5
+        // PUT: api/Roles/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutVacature(int id, Vacature vacature)
+        public async Task<IActionResult> PutRole(int id, Role role)
         {
-            if (id != vacature.Id)
+            if (id != role.Id)
             {
                 return BadRequest();
             }
 
-            _context.Entry(vacature).State = EntityState.Modified;
+            _context.Entry(role).State = EntityState.Modified;
 
             try
             {
@@ -60,7 +60,7 @@ namespace Jobsite.API.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!VacatureExists(id))
+                if (!RoleExists(id))
                 {
                     return NotFound();
                 }
@@ -73,36 +73,36 @@ namespace Jobsite.API.Controllers
             return NoContent();
         }
 
-        // POST: api/Vacatures
+        // POST: api/Roles
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Vacature>> PostVacature(Vacature vacature)
+        public async Task<ActionResult<Role>> PostRole(Role role)
         {
-            _context.Vacatures.Add(vacature);
+            _context.Rollen.Add(role);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetVacature", new { id = vacature.Id }, vacature);
+            return CreatedAtAction("GetRole", new { id = role.Id }, role);
         }
 
-        // DELETE: api/Vacatures/5
+        // DELETE: api/Roles/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteVacature(int id)
+        public async Task<IActionResult> DeleteRole(int id)
         {
-            var vacature = await _context.Vacatures.FindAsync(id);
-            if (vacature == null)
+            var role = await _context.Rollen.FindAsync(id);
+            if (role == null)
             {
                 return NotFound();
             }
 
-            _context.Vacatures.Remove(vacature);
+            _context.Rollen.Remove(role);
             await _context.SaveChangesAsync();
 
             return NoContent();
         }
 
-        private bool VacatureExists(int id)
+        private bool RoleExists(int id)
         {
-            return _context.Vacatures.Any(e => e.Id == id);
+            return _context.Rollen.Any(e => e.Id == id);
         }
     }
 }

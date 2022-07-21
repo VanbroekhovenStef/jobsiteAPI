@@ -24,9 +24,16 @@ namespace Jobsite.API.Controllers
 
         // GET: api/Bedrijfs
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Bedrijf>>> GetBedrijven()
+        public async Task<ActionResult<IEnumerable<Bedrijf>>> GetBedrijven(int? userId)
         {
-            return await _context.Bedrijven.ToListAsync();
+            if (userId == null)
+            {
+                return await _context.Bedrijven.Include(x => x.Vacatures).ThenInclude(x => x.Sollicitaties).ToListAsync();
+            }
+            else
+            {
+                return await _context.Bedrijven.Where(x => x.UserId == userId).Include(x => x.Vacatures).ThenInclude(x => x.Sollicitaties).ToListAsync();
+            }
         }
 
         // GET: api/Bedrijfs/5

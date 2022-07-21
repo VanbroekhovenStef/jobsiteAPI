@@ -1,4 +1,5 @@
-﻿using Jobsite.DAL.Models;
+﻿using Jobsite.DAL.Model;
+using Jobsite.DAL.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.SqlServer;
 
@@ -18,6 +19,7 @@ namespace Jobsite.DAL.Data
         public DbSet<Vacature> Vacatures { get; set; }
         public DbSet<Sollicitatie> Sollicitaties { get; set; }
         public DbSet<Bedrijf> Bedrijven { get; set; }
+        public DbSet<Role> Rollen { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -25,6 +27,7 @@ namespace Jobsite.DAL.Data
             modelBuilder.Entity<Vacature>().ToTable("Vacature");
             modelBuilder.Entity<Sollicitatie>().ToTable("Sollicitatie").HasOne(e => e.Vacature).WithMany(x => x.Sollicitaties).HasForeignKey(s => s.VacatureId).OnDelete(DeleteBehavior.Restrict);
             modelBuilder.Entity<Bedrijf>().ToTable("Bedrijf");
+            modelBuilder.Entity<Role>().ToTable("Role");
         }
     }
 }

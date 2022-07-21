@@ -23,18 +23,62 @@ namespace Jobsite.API.Controllers
 
         // GET: api/Sollicitaties
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Sollicitatie>>> GetSollicitaties(int vacatureId)
+        public async Task<ActionResult<IEnumerable<Sollicitatie>>> GetSollicitaties(int? userId, int? vacatureId)
         {
-            return await _context.Sollicitaties.Where(x => x.VacatureId == vacatureId).Include(x => x.User).Include(x => x.Vacature).ToListAsync();
+            if (userId != null && vacatureId != null)
+            {
+                return await _context.Sollicitaties
+                    .Where(x => x.VacatureId == vacatureId)
+                    .Where(x => x.UserId == userId)
+                    .Include(x => x.User)
+                    .Include(x => x.Vacature)
+                    .ToListAsync();
+            }
+            if (vacatureId != null)
+            {
+                return await _context.Sollicitaties.Where(x => x.VacatureId == vacatureId).Include(x => x.User).Include(x => x.Vacature).ToListAsync();
+            } else if(userId != null)
+            {
+                return await _context.Sollicitaties.Where(x => x.UserId == userId).Include(x => x.Vacature).ThenInclude(x => x.Bedrijf).Include(x => x.Vacature).ThenInclude(x => x.Sollicitaties).ToListAsync();
+            } else
+            {
+                return BadRequest();
+            }
         }
 
-/*        [HttpGet]
-        public async Task<ActionResult<IEnumerable<Sollicitatie>>> GetSollicitatiesFromUser()
-        {
-            return await _context.Sollicitaties.Include(x => x.User).Include(x => x.Vacature).ToListAsync();
-        }*/
+        /*        [HttpGet]
+                public async Task<ActionResult<IEnumerable<Sollicitatie>>> GetSollicitatiesFromUser()
+                {
+                    return await _context.Sollicitaties.Include(x => x.User).Include(x => x.Vacature).ToListAsync();
+                }*/
 
         // GET: api/Sollicitaties/5
+        [HttpGet("FromUserOnVacature")]
+        public async Task<ActionResult<Sollicitatie>> GetSollicitatieFromUserOnVacature(int? userId, int? vacatureId)
+        {
+            if (userId != null && vacatureId != null)
+            {
+                var sollicitatie =  await _context.Sollicitaties
+                    .Where(x => x.VacatureId == vacatureId)
+                    .Where(x => x.UserId == userId)
+/*                    .Include(x => x.User)
+                    .Include(x => x.Vacature)*/
+                    .FirstOrDefaultAsync();
+
+                if (sollicitatie == null)
+                {
+                    return NotFound();
+                } else
+                {
+                    return sollicitatie;
+                }
+            } else
+            {
+                return NotFound();
+            }
+        }
+
+
         [HttpGet("{id}")]
         public async Task<ActionResult<Sollicitatie>> GetSollicitatie(int id)
         {
