@@ -23,9 +23,45 @@ namespace Jobsite.API.Controllers
 
         // GET: api/Vacatures
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Vacature>>> GetVacatures()
+        public async Task<ActionResult<IEnumerable<Vacature>>> GetVacatures(int? bedrijfId, string? titel, bool active = false)
         {
-            return await _context.Vacatures.Include(s => s.Sollicitaties).Include(x => x.Bedrijf).ToListAsync();
+            if (bedrijfId == null && titel == null && !active)
+            {
+                return await _context.Vacatures.Include(s => s.Sollicitaties).Include(x => x.Bedrijf).ToListAsync();
+            } 
+            else if (bedrijfId == null && titel == null && active)
+            {
+                return await _context.Vacatures
+                    .Where(x => x.DatumSluiting > DateTime.Now)
+                    .Include(s => s.Sollicitaties)
+                    .Include(x => x.Bedrijf).ToListAsync();
+            }
+            else if (bedrijfId != null && titel != null)
+            {
+                return await _context.Vacatures
+                    .Where(x => x.Titel.Contains(titel))
+                    .Where(x => x.BedrijfId == bedrijfId)
+                    .Where(x => x.DatumSluiting > DateTime.Now)
+                    .Include(s => s.Sollicitaties)
+                    .Include(x => x.Bedrijf)
+                    .ToListAsync();
+            } else if (bedrijfId != null)
+            {
+                return await _context.Vacatures
+                    .Where(x => x.BedrijfId == bedrijfId)
+                    .Where(x => x.DatumSluiting > DateTime.Now)
+                    .Include(s => s.Sollicitaties)
+                    .Include(x => x.Bedrijf)
+                    .ToListAsync();
+            } else
+            {
+                return await _context.Vacatures
+                    .Where(x => x.Titel.Contains(titel))
+                    .Where(x => x.DatumSluiting > DateTime.Now)
+                    .Include(s => s.Sollicitaties)
+                    .Include(x => x.Bedrijf)
+                    .ToListAsync();
+            }
         }
 
         // GET: api/Vacatures/5
