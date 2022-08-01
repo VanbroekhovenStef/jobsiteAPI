@@ -40,7 +40,7 @@ namespace Jobsite.API.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Bedrijf>> GetBedrijf(int id)
         {
-            var bedrijf = await _context.Bedrijven.FindAsync(id);
+            var bedrijf = await _context.Bedrijven.Include(x => x.Vacatures).FirstOrDefaultAsync(i => i.Id == id);
 
             if (bedrijf == null)
             {

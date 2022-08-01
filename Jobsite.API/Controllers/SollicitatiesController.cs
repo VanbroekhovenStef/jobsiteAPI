@@ -42,7 +42,7 @@ namespace Jobsite.API.Controllers
                 return await _context.Sollicitaties.Where(x => x.UserId == userId).Include(x => x.Vacature).ThenInclude(x => x.Bedrijf).Include(x => x.Vacature).ThenInclude(x => x.Sollicitaties).ToListAsync();
             } else
             {
-                return BadRequest();
+                return NotFound();
             }
         }
 
