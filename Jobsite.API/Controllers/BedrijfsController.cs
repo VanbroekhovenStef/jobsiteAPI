@@ -52,6 +52,7 @@ namespace Jobsite.API.Controllers
 
         // PUT: api/Bedrijfs/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [Authorize]
         [HttpPut("{id}")]
         public async Task<IActionResult> PutBedrijf(int id, Bedrijf bedrijf)
         {
@@ -83,6 +84,7 @@ namespace Jobsite.API.Controllers
 
         // POST: api/Bedrijfs
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [Authorize]
         [HttpPost]
         public async Task<ActionResult<Bedrijf>> PostBedrijf(Bedrijf bedrijf)
         {
@@ -93,6 +95,7 @@ namespace Jobsite.API.Controllers
         }
 
         // DELETE: api/Bedrijfs/5
+        [Authorize]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteBedrijf(int id)
         {

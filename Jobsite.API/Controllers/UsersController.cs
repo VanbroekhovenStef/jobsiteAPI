@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Jobsite.DAL.Data;
 using Jobsite.DAL.Models;
 using Jobsite.DAL.Services;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Jobsite.API.Controllers
 {
@@ -36,6 +37,7 @@ namespace Jobsite.API.Controllers
         }
 
         // GET: api/Users
+        [Authorize]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<User>>> GetUsers()
         {
@@ -43,6 +45,7 @@ namespace Jobsite.API.Controllers
         }
 
         // GET: api/Users/5
+        [Authorize]
         [HttpGet("{id}")]
         public async Task<ActionResult<User>> GetUser(int id)
         {
@@ -58,6 +61,7 @@ namespace Jobsite.API.Controllers
 
         // PUT: api/Users/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [Authorize]
         [HttpPut("{id}")]
         public async Task<IActionResult> PutUser(int id, User user)
         {
@@ -89,6 +93,7 @@ namespace Jobsite.API.Controllers
 
         // POST: api/Users
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [Authorize]
         [HttpPost]
         public async Task<ActionResult<User>> PostUser(User user)
         {
@@ -99,6 +104,7 @@ namespace Jobsite.API.Controllers
         }
 
         // DELETE: api/Users/5
+        [Authorize]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteUser(int id)
         {

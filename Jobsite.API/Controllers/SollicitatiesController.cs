@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Jobsite.DAL.Data;
 using Jobsite.DAL.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Jobsite.API.Controllers
 {
@@ -78,7 +79,7 @@ namespace Jobsite.API.Controllers
             }
         }
 
-
+        [Authorize]
         [HttpGet("{id}")]
         public async Task<ActionResult<Sollicitatie>> GetSollicitatie(int id)
         {
@@ -94,6 +95,7 @@ namespace Jobsite.API.Controllers
 
         // PUT: api/Sollicitaties/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [Authorize]
         [HttpPut("{id}")]
         public async Task<IActionResult> PutSollicitatie(int id, Sollicitatie sollicitatie)
         {
@@ -125,6 +127,7 @@ namespace Jobsite.API.Controllers
 
         // POST: api/Sollicitaties
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [Authorize]
         [HttpPost]
         public async Task<ActionResult<Sollicitatie>> PostSollicitatie(Sollicitatie sollicitatie)
         {
@@ -135,6 +138,7 @@ namespace Jobsite.API.Controllers
         }
 
         // DELETE: api/Sollicitaties/5
+        [Authorize]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteSollicitatie(int id)
         {

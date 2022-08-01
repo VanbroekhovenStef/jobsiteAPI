@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Jobsite.DAL.Data;
 using Jobsite.DAL.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Jobsite.API.Controllers
 {
@@ -80,6 +81,7 @@ namespace Jobsite.API.Controllers
 
         // PUT: api/Vacatures/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [Authorize]
         [HttpPut("{id}")]
         public async Task<IActionResult> PutVacature(int id, Vacature vacature)
         {
@@ -111,6 +113,7 @@ namespace Jobsite.API.Controllers
 
         // POST: api/Vacatures
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [Authorize]
         [HttpPost]
         public async Task<ActionResult<Vacature>> PostVacature(Vacature vacature)
         {
@@ -121,6 +124,7 @@ namespace Jobsite.API.Controllers
         }
 
         // DELETE: api/Vacatures/5
+        [Authorize]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteVacature(int id)
         {
